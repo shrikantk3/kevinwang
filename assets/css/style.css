@@ -1,0 +1,4 @@
+body{background:#ededed;}
+.table{width:100%; background:#fff;}
+.table-responsive{max-height:600px; overflow:auto;}
+.modal{    background: rgba(51, 51, 51, 0.51);}

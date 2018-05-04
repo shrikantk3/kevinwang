@@ -1,0 +1,64 @@
+<section class="container">
+    <br>
+   <h4>{{title}} <button class="btn btn-success float-right" ng-click="popToggle = !popToggle" >+ Add</button>
+<br><br> </h4>
+   <div class="table-responsive">
+    <table class="table table-strip">
+        
+            <thead>
+                <th><input type="checkbox" ng-model="checkall" ng-click="checkUncheckAll()" /></th>
+                <th>Id</th>
+                <th>To do</th>
+                <th>Status</th>
+                <th>Action</th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="x in data | limitTo : 10">
+                    <td><input type="checkbox" value="{{ x.id }}" ng-model="x.checked" ng-change='updateCheckall()' /></td>
+                    <td>{{x.id}}</td>
+                    <td>{{x.title}}</td>
+                    <td>
+                            <span ng-if="x.completed==true" class="badge badge-success">Done</span>
+                            <span ng-if="x.completed==false" class="badge badge-primary">Pending</span>
+                        </td>
+                    <td><button class="btn btn-danger" ng-click="delete($index)">Delete</button></td>
+                </tr>
+            </tbody>
+        </thead>
+    </table>
+</div>
+    <!-- <p>{{data}}</p> -->
+</section>
+<div class="modal show" ng-if="popToggle" id="myModal" style="display: block;">
+        <div class="modal-dialog">
+          <div class="modal-content">
+      
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Add in Todo list</h4>
+              <!-- <button type="button" class="close" data-dismiss="modal" ng-click="popToggle = !popToggle">&times;</button> -->
+            </div>
+      
+            <!-- Modal body -->
+            <div class="modal-body">
+              <form>
+                  <div class="form-group">
+                      <label class="form-inline">To do</label>
+                    <textarea class="form-control" ng-model="todo.title" placeholder="Enter you task.."></textarea>
+                  </div>
+                  <div class="form-group">
+                        <label class="form-inline">Completed</label>
+                        <select class="form-control" value="selected_id" ng-model="todo.completed" ng-options="o.id as o.name for o in option" ng-change="changedValue(todo.completed)">
+                        </select>
+                    </div>
+              </form>
+            </div>
+      
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary bg-voilet" data-dismiss="modal" ng-click="adduser()">Add</button>
+            </div>
+      
+          </div>
+        </div>
+      </div>
